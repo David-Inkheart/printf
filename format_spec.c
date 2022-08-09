@@ -58,6 +58,8 @@ char *str_print(va_list ap)
 
 	p = va_arg(ap, char *);
 
+	if (p == NULL)
+		P = "(null)";
 	return (p);
 }
 

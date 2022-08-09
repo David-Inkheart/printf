@@ -8,5 +8,7 @@ int _printf(const char *format, ...);
         char flag;
         char *(*fg)(va_list ap);
     }fmsp;
-
+char *char_print(va_list ap);
+char *percent_print(va_list ap);
+char *str_print(va_list ap);
 #endif /* MAIN_H */
