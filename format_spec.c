@@ -54,12 +54,10 @@ char *percent_print(va_list ap)
  */
 char *str_print(va_list ap)
 {
-	char *p;
-
-	p = va_arg(ap, char *);
+	char *p = va_arg(ap, char *);
 
 	if (p == NULL)
-		P = "(null)";
+		p = "(null)";
 	return (p);
 }
 
