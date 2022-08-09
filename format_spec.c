@@ -28,3 +28,19 @@ char *char_print(va_list ap)
 
 	free(p);
 }
+/**
+* percent_print - passes the format
+* @ap: Pointer to an unknown number of arguments
+*
+* Return: The percent found
+*/
+char *percent_print(va_list ap)
+{
+	char *p;
+
+	p = 37;
+	if (va_arg(ap, int) == *p)
+	{
+		return (p);
+	}
+}
