@@ -7,7 +7,7 @@
  * char_print - prints a character
  * @ap: pointer to an unknown number of characters
  * @
- * Return: sum of a and b
+ * Return: character
  */
 char *char_print(va_list ap)
 {
@@ -38,9 +38,29 @@ char *percent_print(va_list ap)
 {
 	char *p;
 
-	p = 37;
+	p = "%";
 	if (va_arg(ap, int) == *p)
 	{
 		return (p);
 	}
+	return (p);
 }
+
+/**
+ * str_print - prints a str
+ * @ap: pointer to an unknown length string
+ * @
+ * Return: string
+ */
+char *str_print(va_list ap)
+{
+	char *p;
+
+	p = va_arg(ap, char *);
+
+	return (p);
+}
+
+
+
+
