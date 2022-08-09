@@ -5,28 +5,18 @@
 
 /**
  * char_print - prints a character
- * @ap: pointer to an unknown number of characters
+ * @ap: pointer to unspecified arguments
  * @
  * Return: character
  */
-char *char_print(va_list ap)
+int char_print(va_list ap)
 {
-	char *p;
+	char p;
 
-	p = malloc(sizeof(char));
+	p = va_arg(ap, int);
+	_putchar(p);
 
-	if (p == NULL)
-	{
-		return (NULL);
-	}
-
-	p[0] = va_arg(ap, int);
-
-	va_end(ap);
-
-	return (p);
-
-	free(p);
+	return (0);
 }
 /**
 * percent_print - passes the format
@@ -52,15 +42,48 @@ char *percent_print(va_list ap)
  * @
  * Return: string
  */
-char *str_print(va_list ap)
+int str_print(va_list ap)
 {
-	char *p = va_arg(ap, char *);
+	int i, countchars;
+	char *p;
+
+	countchars = 0;
+	p = va_arg(ap, char *);
 
 	if (p == NULL)
+	{
 		p = "(null)";
-	return (p);
+	}
+	i = 0;
+	while (p[i] != '\0')
+	{
+		_putchar(p[i]);
+		i++;
+		countchars++;
+	}
+	return (countchars);
 }
+/**
+ *print_int - A function that prints out the integer
+ *@args: a variable that takes in a varrying amount of function arguments
+ *Return: The character
+ */
+int print_int(va_list args)
+{
+	int n, chars;
 
-
-
-
+	n = va_arg(args, int);
+	chars = print_number(n);
+	return (chars);
+}
+/**
+ *print_per - a function that accounts for %% as an input
+ *@p: A parameter that stores a % and prints it
+ *Return: Return the % character
+ */
+int print_per(int p)
+{
+	p = '%';
+	_putchar(p);
+	return (1);
+}

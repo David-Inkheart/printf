@@ -7,32 +7,25 @@
 */
 int _printf(const char *format, ...)
 {
-	unsigned int i;
-	char *temp_str;
+	va_list ap;
+	int chars;
 
-	if (format != NULL)
-	{
-		va_list ap;
-		va_start(ap, format);
-		
-		i = 0;
-		while (format && format[i] != '\0')
-		{
-			if (format[0] == 37 && format[1] == 00)
-					return (-1);
+		fmsp spec[] = {
+		{'c', char_print},
+		{'s', str_print},
+		{'%', print_per},
+		{'i', print_int},
+		{'d', print_int},
+		{'r', print_rev},
+		{00, NULL}
+		};
+	va_start(ap, format);
 
-			_putchar(format[i]);
+	chars = 0;
+	if (format == NULL || ap == NULL)
+		return (chars);
+	chars = check_formatter(ap, format, spec);
 
-			if (format[i] == 37)
-			{
-				temp_str = get_fmsp_func(format[i],ap);
-				i++;
-			}
-			if (format[i] != 00)
-				i++;
-		}
 	va_end(ap);
-	return (i);
-	}
-return (0);
+	return (chars);
 }

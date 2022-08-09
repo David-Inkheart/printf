@@ -8,16 +8,20 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int _printf(const char *format, ...);
-
  typedef struct fmsp
     {
         char flag;
-        char *(*fg)(va_list ap);
+        int (*fg)();
     }fmsp;
 int _putchar(char c);
-char *char_print(va_list ap);
-char *percent_print(va_list ap);
-char *str_print(va_list ap);
+int char_print(va_list ap);
+int print_per(int p);
+int str_print(va_list ap);
+int print_int(va_list args);
 char *get_fmsp_func(char *s, va_list ap);
+int print_rev(va_list args);
+int print_number(int n);
+int _printf(const char *format, ...);
+int check_formatter(va_list args, const char *format, fmsp spec[]);
+
 #endif /* MAIN_H */
